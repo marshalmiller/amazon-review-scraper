@@ -51,7 +51,8 @@ with open("urls.txt",'r') as urllist, open('data.csv','w') as outfile:
                         r['verified'] = 'Yes'
                     else:
                         r['verified'] = 'Yes'
-                r['rating'] = r['rating'].split(' out of')[0]
+                if 'rating' in r and r['rating']:
+                    r['rating'] = r['rating'].split(' out of')[0]
                 date_posted = r['date'].split('on ')[-1]
                 if r['images']:
                     r['images'] = "\n".join(r['images'])
